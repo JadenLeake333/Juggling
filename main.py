@@ -42,9 +42,12 @@ while menu_choice != '5':
     if menu_choice == '2':
         search = input("\nWhat trick are you looking for?: ")
         url = mn.search_trick_website(search,tricks,links)
-        print("Redirecting you to the %s webpage..." %search)
-        time.sleep(2)
-        webbrowser.open_new(url)
+        if url:
+            print("Redirecting you to the %s webpage..." %search)
+            time.sleep(2)
+            webbrowser.open_new(url)
+        else:
+            continue
     if menu_choice == '3':
         data = open("catalog.txt","a")
         add = input("What trick would you like to add to your catalog?: ")

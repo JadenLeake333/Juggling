@@ -1,4 +1,3 @@
-
 class menus:
     def main_menu():
         print("\n[1] Display Tricks\n[2] Search for Trick\n[3] Add a learned trick\n[4] View Learned Tricks\n[5] Exit")      
