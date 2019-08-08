@@ -31,12 +31,28 @@ def loadTricks(soup,web):
 # In the future: Store learned tricks in SQL Database#
 web = requests.get("http://libraryofjuggling.com/Home.html")
 soup = BeautifulSoup(web.text,'html.parser')
-data = open("data.txt","r")
 loadTricks(soup,web)
 #webbrowser.open_new("http://libraryofjuggling.com/Home.html")  
-while menu_choice != '3':
+while menu_choice != '5':
     numb_list = 0 
     mn.main_menu()
     menu_choice = input("\nType your selection: ")
     if menu_choice == '1':
         mn.display_tricks(tricks)
+    if menu_choice == '2':
+        search = input("\nWhat trick are you looking for?: ")
+        url = mn.search_trick_website(search,tricks,links)
+        print("Redirecting you to the %s webpage..." %search)
+        time.sleep(2)
+        webbrowser.open_new(url)
+    if menu_choice == '3':
+        data = open("catalog.txt","a")
+        add = input("What trick would you like to add to your catalog?: ")
+        mn.add_tricks(add,tricks,links,data)
+        data.close()
+    if menu_choice == '4':
+        data = open("catalog.txt","r")
+        mn.view_tricks(data)
+        data.close()
+
+
